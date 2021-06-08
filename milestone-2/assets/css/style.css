@@ -17,6 +17,7 @@ header {
 
 header input {
     padding: 3px;
+    min-width: 200px;
 }
 
 header button {
