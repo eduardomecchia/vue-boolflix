@@ -8,7 +8,7 @@ const app = new Vue({
 
         results: [],
 
-        listOfLanguages: [],
+        languages: [],
 
         error: null
     },
@@ -45,7 +45,8 @@ const app = new Vue({
                 flagCode = "us";
             }
 
-            return `https://www.countryflags.io/${flagCode}/shiny/32.png`;
+            return `https://flagcdn.com/20x15/${flagCode}.png`;
+            /* return `https://www.countryflags.io/${flagCode}/shiny/32.png`; */
         }
     }
 });
