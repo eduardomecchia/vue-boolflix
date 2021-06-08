@@ -41,10 +41,11 @@ const app = new Vue({
          * @returns An URL that points to the requested flag
          */
         getFlag(flagCode) {
-            // theMovieDB returns "en" in case of English, which is not supported by Country Flags API, so we convert it to "us"
-            if (flagCode === "en") {
-                flagCode = "us";
-            }
+            // theMovieDB returns languages whereas flagCDN works with countries, so we manually convert some of the most important ones
+            flagCode === "en" ? flagCode = "us" 
+            : flagCode === "ja" ? flagCode = "jp" 
+            : flagCode === "hi" ? flagCode = "in" 
+            : flagCode = flagCode;
 
             if (!this.languages.includes(flagCode)) {
                 return "./assets/img/noflag.png";
