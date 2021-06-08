@@ -64,6 +64,8 @@ const app = new Vue({
                 this.languages.push(key);
             }
         })
-        .catch();
+        .catch(error => {
+            console.error(error);
+        });
     }
 });
