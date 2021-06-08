@@ -51,7 +51,6 @@ const app = new Vue({
             }
 
             return `https://flagcdn.com/28x21/${flagCode}.png`;
-            /* return `https://www.countryflags.io/${flagCode}/shiny/32.png`; */
         }
     },
 
