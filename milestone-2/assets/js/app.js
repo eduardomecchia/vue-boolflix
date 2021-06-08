@@ -21,7 +21,8 @@ const app = new Vue({
             const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=` + this.query);
             const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=` + this.query);
 
-            axios.all([movieRequest, tvRequest])
+            axios
+            .all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
                 const movieResults = responses[0].data.results;
                 const tvResults = responses[1].data.results;
@@ -45,8 +46,25 @@ const app = new Vue({
                 flagCode = "us";
             }
 
-            return `https://flagcdn.com/20x15/${flagCode}.png`;
+            if (!this.languages.includes(flagCode)) {
+                return "./assets/img/noflag.png";
+            }
+
+            return `https://flagcdn.com/28x21/${flagCode}.png`;
             /* return `https://www.countryflags.io/${flagCode}/shiny/32.png`; */
         }
+    },
+
+    mounted() {
+        axios
+        .get("https://flagcdn.com/en/codes.json")
+        .then(response => {
+            const availableFlags = response.data;
+
+            for (const key in availableFlags) {
+                this.languages.push(key);
+            }
+        })
+        .catch();
     }
 });
