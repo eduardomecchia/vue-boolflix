@@ -9,7 +9,7 @@ const app = new Vue({
 
     methods: {
         /**
-         * Fires a request to theMovieDB API and gets the movies which name includes the query
+         * Fires a request to theMovieDB API and gets the movies AND TV shows which name includes the query
          */
         search() {
             const movieRequest = axios.get("https://api.themoviedb.org/3/search/movie?api_key=a38c554ce7236d631b800436519a221a&query=" + this.query);
@@ -17,9 +17,9 @@ const app = new Vue({
 
             axios.all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
-                console.log(responses);
                 const movieResults = responses[0].data.results;
                 const tvResults = responses[1].data.results;
+
                 this.results = [...movieResults, ...tvResults];
             }))
         },
