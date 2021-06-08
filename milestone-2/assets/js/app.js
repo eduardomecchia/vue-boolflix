@@ -32,16 +32,16 @@ const app = new Vue({
 
         /**
          * Dynamically gets a flag from the Country Flags API
-         * @param {string} flagId 
+         * @param {string} flagCode 
          * @returns An URL that points to the requested flag
          */
-        getFlag(flagId) {
+        getFlag(flagCode) {
             // theMovieDB returns "en" in case of English, which is not supported by Country Flags API, so we convert it to "us"
-            if (flagId === "en") {
-                flagId = "us"
+            if (flagCode === "en") {
+                flagCode = "us";
             }
 
-            return `https://www.countryflags.io/${flagId}/shiny/32.png`;
+            return `https://www.countryflags.io/${flagCode}/shiny/32.png`;
         }
     }
 });
