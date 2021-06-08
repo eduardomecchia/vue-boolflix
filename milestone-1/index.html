@@ -9,7 +9,12 @@
 </head>
 <body>
     <div id="app">
-        
+        <header>
+            <input type="text" v-model="query">
+            <button @click="search">Search</button>
+        </header>
+
+        <main></main>
     </div>
     
      <!-- Axios CDN -->
