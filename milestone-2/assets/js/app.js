@@ -56,6 +56,7 @@ const app = new Vue({
     },
 
     mounted() {
+        // Fill languages array with all the codes supported by flagCDN
         axios
         .get("https://flagcdn.com/en/codes.json")
         .then(response => {
