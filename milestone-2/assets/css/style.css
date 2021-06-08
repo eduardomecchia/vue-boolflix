@@ -43,3 +43,7 @@ main ul {
     padding: 15px;
     margin: 20px;
 }
+
+#error {
+    text-align: center;
+}

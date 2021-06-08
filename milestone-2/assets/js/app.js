@@ -4,7 +4,9 @@ const app = new Vue({
     data: {
         query: "",
 
-        results: []
+        results: [],
+
+        error: null
     },
 
     methods: {
@@ -22,6 +24,10 @@ const app = new Vue({
 
                 this.results = [...movieResults, ...tvResults];
             }))
+            .catch(error => {
+                console.error(error);
+                this.error = "We're sorry, the service is unavailable at this time. Try again later";
+            });
         },
 
         /**
