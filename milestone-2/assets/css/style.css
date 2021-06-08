@@ -15,7 +15,7 @@ header {
     padding: 30px 0;
 }
 
-header input {
+#search {
     padding: 3px;
     min-width: 200px;
 }
