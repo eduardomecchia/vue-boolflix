@@ -34,6 +34,10 @@ main ul {
 }
 
 .result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: lavender;
     padding: 15px;
     margin: 20px;

@@ -19,7 +19,7 @@
                <li class="result" v-for="result in results">
                    <div class="title">{{ result.title }}</div>
                    <div class="original-title">{{ result.original_title }}</div>
-                   <div class="language">{{ result.original_language }}</div>
+                   <img class="original-language" :src="getFlag(result.original_language)">
                    <div class="vote">{{ result.vote_average }}</div>
                </li> 
             </ul>
