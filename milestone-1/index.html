@@ -14,7 +14,16 @@
             <button @click="search">Search</button>
         </header>
 
-        <main></main>
+        <main>
+            <ul>
+               <li v-for="result in results">
+                   <div>{{ result.title }}</div>
+                   <div>{{ result.original_title }}</div>
+                   <div>{{ result.original_language }}</div>
+                   <div>{{ result.vote_average }}</div>
+               </li> 
+            </ul>
+        </main>
     </div>
     
      <!-- Axios CDN -->
