@@ -27,6 +27,7 @@ const app = new Vue({
          * @returns An URL that points to the requested flag
          */
         getFlag(flagId) {
+            // theMovieDB returns "en" in case of English, which is not supported by Country Flags API, so we convert it to "us"
             if (flagId === "en") {
                 flagId = "us"
             }
