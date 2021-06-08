@@ -16,11 +16,11 @@
 
         <main>
             <ul>
-               <li v-for="result in results">
-                   <div>{{ result.title }}</div>
-                   <div>{{ result.original_title }}</div>
-                   <div>{{ result.original_language }}</div>
-                   <div>{{ result.vote_average }}</div>
+               <li class="result" v-for="result in results">
+                   <div class="title">{{ result.title }}</div>
+                   <div class="original-title">{{ result.original_title }}</div>
+                   <div class="language">{{ result.original_language }}</div>
+                   <div class="vote">{{ result.vote_average }}</div>
                </li> 
             </ul>
         </main>
