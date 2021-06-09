@@ -77,6 +77,10 @@ main ul {
     align-items: center;
 }
 
+.overview {
+    overflow: hidden;
+}
+
 .star {
     color: white;
     font-size: 20px;
