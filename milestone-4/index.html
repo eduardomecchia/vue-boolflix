@@ -25,11 +25,7 @@
                         <div class="original-title">{{ result.original_title || result.original_name }}</div>
                         <img class="original-language" width="32" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" :alt="result.original_language">
                         <div class="vote">
-                            <div class="stars">
-                                <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
-                            </div>
-
-                            <div>{{ toBaseFive(result.vote_average) }}/5</div>
+                            <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
                         </div>
                     </li> 
                 </ul>
