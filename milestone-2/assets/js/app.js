@@ -18,8 +18,8 @@ const app = new Vue({
          * Fires a request to theMovieDB API and gets the movies AND TV shows which name includes the query
          */
         search() {
-            const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=` + this.query);
-            const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=` + this.query);
+            const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
+            const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
 
             axios
             .all([movieRequest, tvRequest])
