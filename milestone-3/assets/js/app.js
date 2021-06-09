@@ -8,8 +8,6 @@ const app = new Vue({
 
         results: [],
 
-        languages: [],
-
         error: null
     },
 
@@ -36,26 +34,6 @@ const app = new Vue({
         },
 
         /**
-         * Dynamically gets a flag from the flagCDN
-         * @param {string} flagCode 
-         * @returns An URL that points to the requested flag
-         */
-        getFlag(flagCode) {
-            // theMovieDB returns languages whereas flagCDN works with countries, so we manually convert some of the most important ones
-            flagCode === "en" ? flagCode = "us" 
-            : flagCode === "ja" ? flagCode = "jp" 
-            : flagCode === "hi" ? flagCode = "in" 
-            : flagCode === "sv" ? flagCode = "se" 
-            : flagCode = flagCode;
-
-            if (!this.languages.includes(flagCode)) {
-                return "./assets/img/noflag.png";
-            }
-
-            return `https://flagcdn.com/28x21/${flagCode}.png`;
-        },
-
-        /**
          * Rounds up the a base 10 number and transforms it in a base 5 number
          * @param {number} number - The base 10 number
          * @returns The new base 5 number 
@@ -64,21 +42,5 @@ const app = new Vue({
             const roundedNumber = Math.ceil(number);
             return Math.ceil(roundedNumber / 2);
         }
-    },
-
-    mounted() {
-        // Fill languages array with all the codes supported by flagCDN
-        axios
-        .get("https://flagcdn.com/en/codes.json")
-        .then(response => {
-            const availableFlags = response.data;
-
-            for (const key in availableFlags) {
-                this.languages.push(key);
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
     }
 });
