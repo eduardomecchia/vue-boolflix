@@ -53,6 +53,17 @@ const app = new Vue({
             }
 
             return `https://flagcdn.com/28x21/${flagCode}.png`;
+        },
+
+        /**
+         * Rounds up the vote average of a movie or show and transforms it in a base 5 number
+         * @param {object} number - The base 10 vote average
+         * @returns The new base 5 vote average 
+         */
+        toBaseFive(number) {
+            const roundedNumber = Math.ceil(number);
+            console.log(roundedNumber);
+            return parseInt(roundedNumber, 5);
         }
     },
 
