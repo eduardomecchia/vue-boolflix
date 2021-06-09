@@ -20,7 +20,7 @@
             <main>
                 <ul>
                     <li class="result" v-for="result in results">
-                        <img :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" :alt="'Poster image of ' + result.original_title || result.original_name">
+                        <img :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
                         <div class="title">{{ result.title || result.name }}</div>
                         <div class="original-title">{{ result.original_title || result.original_name }}</div>
                         <img class="original-language" :src="getFlag(result.original_language)" :alt="result.original_language">
