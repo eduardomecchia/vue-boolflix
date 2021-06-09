@@ -10,6 +10,10 @@ body {
     background-color: #434343;
 }
 
+.font-weight-bold {
+    font-weight: bold;
+}
+
 /* Header rules */
 
 header {
@@ -50,13 +54,12 @@ main ul {
     height: 547px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: black;
     color: white;
     padding: 15px;
     margin: 20px;
     border: 2px solid white;
+    font-size: 22px;
 }
 
 .result *:not(.poster), .result:hover .poster {
