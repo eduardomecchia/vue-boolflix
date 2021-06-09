@@ -23,33 +23,35 @@
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
 
                         <div class="title">
-                            <span class="font-weight-bold">Title:&nbsp;</span>
+                            <span class="font-weight-bold text-nowrap">Title:&nbsp;</span>
                             <span>{{ result.title || result.name }}</span>
                         </div>
 
                         <div class="original-title">
-                            <span class="font-weight-bold">Original title:&nbsp;</span>
+                            <span class="font-weight-bold text-nowrap">Original title:&nbsp;</span>
                             <span>{{ result.original_title || result.original_name }}</span>
                         </div>
 
                         <div class="original-language">
-                            <span class="font-weight-bold">Original language:&nbsp;</span>
+                            <span class="font-weight-bold text-nowrap">Original language:&nbsp;</span>
                             <img width="32" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" :alt="result.original_language">
                         </div>
 
                         <div class="vote">
-                            <span class="font-weight-bold">Vote:&nbsp;</span>
+                            <span class="font-weight-bold text-nowrap">Vote:&nbsp;</span>
                             <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
                         </div>
 
                         <div class="overview">
-                            <span class="font-weight-bold">Overview:&nbsp;</span>
-                            <p>{{ result.overview ? result.overview : "No description available." }}</p>
+                            <p>
+                                <span class="font-weight-bold">Overview:&nbsp;</span>
+                                {{ result.overview ? result.overview : "No description available." }}
+                            </p>
                         </div>
                     </li> 
                 </ul>
 
-                <div id="error" v-if="error">{{ error }}</div>
+                <!-- <div id="error" v-if="error">{{ error }}</div> -->
             </main>
         </div>
         
