@@ -45,6 +45,7 @@ const app = new Vue({
             flagCode === "en" ? flagCode = "us" 
             : flagCode === "ja" ? flagCode = "jp" 
             : flagCode === "hi" ? flagCode = "in" 
+            : flagCode === "sv" ? flagCode = "se" 
             : flagCode = flagCode;
 
             if (!this.languages.includes(flagCode)) {
