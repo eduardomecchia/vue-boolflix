@@ -56,9 +56,9 @@ const app = new Vue({
         },
 
         /**
-         * Rounds up the vote average of a movie or show and transforms it in a base 5 number
-         * @param {object} number - The base 10 vote average
-         * @returns The new base 5 vote average 
+         * Rounds up the a base 10 number and transforms it in a base 5 number
+         * @param {number} number - The base 10 number
+         * @returns The new base 5 number 
          */
         toBaseFive(number) {
             const roundedNumber = Math.ceil(number);
