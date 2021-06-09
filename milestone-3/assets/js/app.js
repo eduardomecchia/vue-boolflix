@@ -36,7 +36,7 @@ const app = new Vue({
         },
 
         /**
-         * Dynamically gets a flag from the Country Flags API
+         * Dynamically gets a flag from the flagCDN
          * @param {string} flagCode 
          * @returns An URL that points to the requested flag
          */
