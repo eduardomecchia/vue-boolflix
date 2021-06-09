@@ -46,6 +46,10 @@ header button {
 
 /* Main content rules */
 
+main {
+    color: white;
+}
+
 main ul {
     display: flex;
     flex-wrap: wrap;
@@ -59,7 +63,6 @@ main ul {
     display: flex;
     flex-direction: column;
     background-color: black;
-    color: white;
     padding: 15px;
     margin: 20px;
     border: 2px solid white;
@@ -82,7 +85,6 @@ main ul {
 }
 
 .star {
-    color: white;
     font-size: 20px;
 }
 .full.star {
@@ -90,5 +92,7 @@ main ul {
 }
 
 #error {
+    padding: 50px;
     text-align: center;
+    font-size: 30px;
 }
