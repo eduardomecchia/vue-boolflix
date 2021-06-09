@@ -47,3 +47,12 @@ main ul {
 #error {
     text-align: center;
 }
+
+.star {
+    color: white;
+    font-size: 20px;
+}
+
+.full.star {
+    color: #ffd400;
+}

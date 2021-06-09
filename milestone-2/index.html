@@ -23,7 +23,10 @@
                    <div class="title">{{ result.title || result.name }}</div>
                    <div class="original-title">{{ result.original_title || result.original_name }}</div>
                    <img class="original-language" :src="getFlag(result.original_language)" :alt="result.original_language">
-                   <div class="vote">{{ toBaseFive(result.vote_average) }}</div>
+                   <div class="vote">
+                       <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                       {{ toBaseFive(result.vote_average) }}
+                    </div>
                </li> 
             </ul>
 
