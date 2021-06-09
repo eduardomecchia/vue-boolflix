@@ -1,0 +1,65 @@
+/* Global rules */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header rules */
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+#search {
+    padding: 3px;
+    min-width: 200px;
+}
+
+header button {
+    margin-left: 20px;
+    padding: 3px 10px;
+}
+
+/* Main content rules */
+
+main ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: lavender;
+    padding: 15px;
+    margin: 20px;
+}
+
+#error {
+    text-align: center;
+}
+
+.vote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.star {
+    color: white;
+    font-size: 20px;
+}
+
+.full.star {
+    color: #ffd400;
+}

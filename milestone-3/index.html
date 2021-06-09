@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolflix</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Application header -->
+        <header>
+            <input id="search" type="text" v-model="query" @keyup.enter="search" placeholder="Search for a movie or TV show">
+            <button @click="search">Search</button>
+        </header>
+
+        <!-- Application content -->
+        <main>
+            <ul>
+               <li class="result" v-for="result in results">
+                   <div class="title">{{ result.title || result.name }}</div>
+                   <div class="original-title">{{ result.original_title || result.original_name }}</div>
+                   <img class="original-language" :src="getFlag(result.original_language)" :alt="result.original_language">
+                   <div class="vote">
+                       <div class="stars">
+                           <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                       </div>
+
+                        <div>{{ toBaseFive(result.vote_average) }}/5</div>
+                    </div>
+               </li> 
+            </ul>
+
+            <div id="error" v-if="error">{{ error }}</div>
+        </main>
+    </div>
+    
+     <!-- Axios CDN -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+     <!-- Vue.js 2 CDN -->
+     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+     <!-- App script -->
+     <script src="./assets/js/app.js"></script>
+</body>
+</html>
