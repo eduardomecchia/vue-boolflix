@@ -46,13 +46,25 @@ main ul {
 }
 
 .result {
+    width: 376px;
+    height: 547px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lavender;
+    background-color: black;
+    color: white;
     padding: 15px;
     margin: 20px;
+    border: 2px solid white;
+}
+
+.result *:not(.poster), .result:hover .poster {
+    display: none;
+}
+
+.result:hover *:not(.poster) {
+    display: flex;
 }
 
 #error {
