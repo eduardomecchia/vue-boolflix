@@ -48,6 +48,13 @@ main ul {
     text-align: center;
 }
 
+.vote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .star {
     color: white;
     font-size: 20px;

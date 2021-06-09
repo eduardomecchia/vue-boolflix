@@ -61,9 +61,8 @@ const app = new Vue({
          * @returns The new base 5 vote average 
          */
         toBaseFive(number) {
-            const roundedNumber = parseInt(Math.ceil(number));
-            console.log(roundedNumber);
-            return parseInt(roundedNumber, 5);
+            const roundedNumber = Math.ceil(number);
+            return Math.ceil(roundedNumber / 2);
         }
     },
 
