@@ -38,8 +38,13 @@
                         </div>
 
                         <div class="vote">
-                            <span class="font-weight-bold">Voto:&nbsp;</span>
+                            <span class="font-weight-bold">Vote:&nbsp;</span>
                             <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                        </div>
+
+                        <div class="overview">
+                            <span class="font-weight-bold">Overview:&nbsp;</span>
+                            <p>{{ result.overview ? result.overview : "No description available." }}</p>
                         </div>
                     </li> 
                 </ul>
