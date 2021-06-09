@@ -19,18 +19,19 @@
         <!-- Application content -->
         <main>
             <ul>
-               <li class="result" v-for="result in results">
-                   <div class="title">{{ result.title || result.name }}</div>
-                   <div class="original-title">{{ result.original_title || result.original_name }}</div>
-                   <img class="original-language" :src="getFlag(result.original_language)" :alt="result.original_language">
-                   <div class="vote">
-                       <div class="stars">
-                           <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
-                       </div>
+                <li class="result" v-for="result in results">
+                    <img :src="'https://image.tmdb.org/t/p/w342' + result.poster_path" :alt="'Poster image of ' + result.original_title || result.original_name">
+                    <div class="title">{{ result.title || result.name }}</div>
+                    <div class="original-title">{{ result.original_title || result.original_name }}</div>
+                    <img class="original-language" :src="getFlag(result.original_language)" :alt="result.original_language">
+                    <div class="vote">
+                        <div class="stars">
+                            <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                        </div>
 
                         <div>{{ toBaseFive(result.vote_average) }}/5</div>
                     </div>
-               </li> 
+                </li> 
             </ul>
 
             <div id="error" v-if="error">{{ error }}</div>
