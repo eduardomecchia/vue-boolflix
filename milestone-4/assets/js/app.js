@@ -16,7 +16,7 @@ const app = new Vue({
          * Fires a request to theMovieDB API and gets the movies AND TV shows which name includes the query
          */
         search() {
-            const movieRequest = axios.get(`https://api.themoviedb.org/3/seach/movie?api_key=${this.apiKey}&query=${this.query}`);
+            const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
             const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
 
             axios
@@ -29,7 +29,6 @@ const app = new Vue({
             }))
             .catch(error => {
                 if (error.response.status === 422) {
-                    /* this.error = "Search for movies or TV shows using the searchbar above."; */
                     return
                 } else {
                     console.error(error);
