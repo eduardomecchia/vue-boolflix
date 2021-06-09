@@ -67,10 +67,14 @@ main ul {
 }
 .result > *:not(.poster), .result:hover .poster {
     display: none;
-    margin: 2px 0;
+    margin: 4px 0;
 }
 .result:hover > *:not(.poster) {
     display: flex;
+}
+
+.vote, .original-language {
+    align-items: center;
 }
 
 .star {
