@@ -23,8 +23,7 @@ const app = new Vue({
             const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
             const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
 
-            axios
-            .all([movieRequest, tvRequest])
+            axios.all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
                 this.movieResults = responses[0].data.results;
                 this.tvResults = responses[1].data.results;
@@ -55,8 +54,7 @@ const app = new Vue({
          */
         getCast(array, category) {
             array.forEach(entry => {
-                axios
-                .get(`https://api.themoviedb.org/3/${category}/${entry.id}/credits?api_key=${this.apiKey}`)
+                axios.get(`https://api.themoviedb.org/3/${category}/${entry.id}/credits?api_key=${this.apiKey}`)
                 .then((response) => {
                     this.$set(entry, "cast", []);
 
@@ -75,9 +73,30 @@ const app = new Vue({
         /**
          * Gets genres of all given movies or shows from theMovieDB API 
          * @param {array} array - Collection of movies or shows in which to cycle
-         * @param {string} category - Can either be "movie" or "tv". It's used to build the URL of the HTTP request
+         * @param {string} category - Can either be "movie" or "tv". It's needed to know which list of genres to use
          */
         getGenres(array, category) {
+            array.forEach(entry => {
+                this.$set(entry, "genre_names", []);
+                
+                if (category === "movie") {
+                    const currentGenresIds = entry.genre_ids;
+
+                    this.listOfMovieGenres.forEach(genre => {
+                        if (currentGenresIds.includes(genre.id)) {
+                            entry.genre_names.push(genre.name);
+                        }
+                    });
+                } else if (category === "tv") {
+                    const currentGenresIds = entry.genre_ids;
+
+                    this.listOfTvGenres.forEach(genre => {
+                        if (currentGenresIds.includes(genre.id)) {
+                            entry.genre_names.push(genre.name);
+                        }
+                    });
+                }
+            });
         },
 
         /**
@@ -104,7 +123,6 @@ const app = new Vue({
         // Get all TV genres
         axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${this.apiKey}`)
         .then(response => {
-            console.log(response.data.genres);
             this.listOfTvGenres = response.data.genres;
         })
         .catch(error => {
