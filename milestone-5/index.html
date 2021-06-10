@@ -22,21 +22,25 @@
 
             <!-- Application content -->
             <main>
-                <ul>
-                    <li class="result" v-for="result in results">
+                <ul class="movies">
+                    <li class="section-title"v-if="movieResults.length > 0">
+                        <h1>MOVIES:</h1>
+                    </li>
+
+                    <li class="result" v-for="result in movieResults">
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
 
                         <div class="title">
                             <div>
                                 <span class="font-weight-bold text-nowrap">Title:&nbsp;</span>
-                                <span>{{ result.title || result.name }}</span>
+                                <span>{{ result.title }}</span>
                             </div>
                         </div>
 
                         <div class="original-title">
                             <div>
                                 <span class="font-weight-bold text-nowrap">Original title:&nbsp;</span>
-                                <span>{{ result.original_title || result.original_name }}</span>
+                                <span>{{ result.original_title }}</span>
                             </div>
                         </div>
 
@@ -45,10 +49,61 @@
                             <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
                         </div>
 
-                        <div class="cast">
+                        <!-- <div class="cast">
                             <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
                             <span>{{ getCast(result.id) }}</span>
+                        </div> -->
+
+                        <!-- <div class="genres">
+                            <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>
+                            <span>{{ getGenres(result.id) }}</span>
+                        </div> -->
+
+                        <div class="vote">
+                            <span class="font-weight-bold text-nowrap">Rating:&nbsp;</span>
+                            <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
                         </div>
+
+                        <div class="overview">
+                            <div>
+                                <span class="font-weight-bold">Overview:&nbsp;</span>
+                                <span>{{ result.overview ? result.overview : "No description available." }}</span>
+                            </div>
+                        </div>
+                    </li> 
+                </ul>
+
+                <ul class="tv-shows">
+                    <li class="section-title" v-if="tvResults.length > 0">
+                        <h1>TV SHOWS:</h1>
+                    </li>
+
+                    <li class="result" v-for="result in tvResults">
+                        <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
+
+                        <div class="title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Title:&nbsp;</span>
+                                <span>{{ result.name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Original title:&nbsp;</span>
+                                <span>{{ result.original_name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-language">
+                            <span class="font-weight-bold text-nowrap">Original language:&nbsp;</span>
+                            <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
+                        </div>
+
+                        <!-- <div class="cast">
+                            <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
+                            <span>{{ getCast(result.id) }}</span>
+                        </div> -->
 
                         <!-- <div class="genres">
                             <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>

@@ -6,7 +6,8 @@ const app = new Vue({
 
         apiKey: "a38c554ce7236d631b800436519a221a",
 
-        results: [],
+        movieResults: [],
+        tvResults: [],
 
         error: null
     },
@@ -21,10 +22,8 @@ const app = new Vue({
 
             axios.all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
-                const movieResults = responses[0].data.results;
-                const tvResults = responses[1].data.results;
-
-                this.results = [...movieResults, ...tvResults];
+                this.movieResults = responses[0].data.results;
+                this.tvResults = responses[1].data.results;
             }))
             .catch(error => {
                 if (error.response.status === 422) {
@@ -37,7 +36,7 @@ const app = new Vue({
         },
 
         /** */
-        getCast(id) {
+        /* getCast(id) {
             axios
             .get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${this.apiKey}`)
             .then((response) => {
@@ -46,7 +45,7 @@ const app = new Vue({
             .catch((error) => {
                 console.log(error);
             });
-        },
+        }, */
 
         /* getGenres(id) {
             axios

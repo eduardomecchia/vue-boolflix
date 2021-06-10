@@ -49,11 +49,19 @@ main {
     color: white;
 }
 
-main ul {
+.movies,
+.tv-shows {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     list-style-type: none;
+}
+
+.section-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
 }
 
 .result {
