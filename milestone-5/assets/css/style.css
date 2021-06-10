@@ -97,6 +97,10 @@ main {
     align-items: center;
 }
 
+.original-language img {
+    margin-left: 5px;
+}
+
 .overview {
     overflow: hidden;
 }
