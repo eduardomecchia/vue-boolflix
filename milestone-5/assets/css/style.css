@@ -78,6 +78,7 @@ main {
     margin: 20px;
     border: 2px solid white;
     font-size: 22px;
+    overflow-y: auto;
 }
 .result > *:not(.poster), 
 .result:hover .poster {
@@ -99,10 +100,6 @@ main {
 
 .original-language img {
     margin-left: 5px;
-}
-
-.overview {
-    overflow: hidden;
 }
 
 .star {
