@@ -35,15 +35,20 @@ const app = new Vue({
                 }
             })
             .finally(() => {
+                // Get cast and genres of all displayed movies 
                 this.getCast(this.movieResults, "movie");
+                this.getGenres(this.movieResults, "movie");
+
+                // Get cast and genres of all displayed TV shows
                 this.getCast(this.tvResults, "tv");
+                this.getGenres(this.tvResults, "tv");
             });
         },
 
         /**
-         * Gets first five members of the cast of a movie or show with the given ID from theMovieDB API 
+         * Gets first five members of the cast of all given movies or shows from theMovieDB API 
          * @param {array} array - Collection of movies or shows in which to cycle
-         * @param {string} category - Can either be movie or tv. It's used to build the URL of the HTTP request
+         * @param {string} category - Can either be "movie" or "tv". It's used to build the URL of the HTTP request
          */
         getCast(array, category) {
             array.forEach(entry => {
@@ -65,20 +70,13 @@ const app = new Vue({
         },
 
         /**
-         * Gets genres of movie or show with the given ID from theMovieDB API 
-         * @param {string} typeOfEntry - Either "movie" or "tv". Needed to make the HTTP request
-         * @param {string} id - ID that points to a specific entry in theMovieDB API
+         * Gets genres of all given movies or shows from theMovieDB API 
+         * @param {array} array - Collection of movies or shows in which to cycle
+         * @param {string} category - Can either be "movie" or "tv". It's used to build the URL of the HTTP request
          */
-        /* getGenres(typeOfEntry, id) {
-            axios
-            .get(`https://api.themoviedb.org/3/${typeOfEntry}/${id}/credits?api_key=${this.apiKey}`)
-            .then((response) => {
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-        }, */
+        getGenres(array, category) {
+            
+        },
 
         /**
          * Rounds up the a base 10 number and transforms it in a base 5 number
