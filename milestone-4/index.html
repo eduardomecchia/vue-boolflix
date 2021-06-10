@@ -16,7 +16,7 @@
         <div id="app">
             <!-- Application header -->
             <header>
-                <span class="logo">BOOLFLIX</span>
+                <img class="logo" src="./assets/img/logo.png" alt="Boolflix logo">
                 <input id="search" type="text" v-model="query" @keyup="search" placeholder="Search for a movie or TV show">
             </header>
 
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="vote">
-                            <span class="font-weight-bold text-nowrap">Vote:&nbsp;</span>
+                            <span class="font-weight-bold text-nowrap">Rating:&nbsp;</span>
                             <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
                         </div>
 
