@@ -123,3 +123,11 @@ main {
     text-align: center;
     font-size: 30px;
 }
+
+/* Media queries */
+
+@media screen and (max-width: 450px) {
+    .logo {
+        max-width: 100px;
+    }
+}
