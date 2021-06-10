@@ -9,6 +9,7 @@
 
 body {
     background-color: #434343;
+    overflow-x: hidden;
 }
 
 .font-weight-bold {
@@ -56,9 +57,8 @@ main {
 .movies,
 .tv-shows {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     list-style-type: none;
+    overflow-y: auto;
 }
 
 .section-title {
@@ -73,6 +73,7 @@ main {
     height: 547px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     background-color: black;
     padding: 15px;
     margin: 20px;
