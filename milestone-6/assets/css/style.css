@@ -145,10 +145,9 @@ main {
 .result::-webkit-scrollbar {
     width: 7px;
 }
-/* Hide card scrollbar for IE, Edge and Firefox */
+/* Hide card scrollbar for IE and Edge */
 .scrollbar-hidden {
     -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 /* Media queries */
