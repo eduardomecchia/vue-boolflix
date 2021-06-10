@@ -17,7 +17,10 @@
             <!-- Application header -->
             <header>
                 <img class="logo" src="./assets/img/logo.png" alt="Boolflix logo">
-                <input id="search" type="text" v-model="query" @keyup="search" placeholder="Search for a movie or TV show">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input id="search" type="text" v-model="query" @keyup="search">
+                </div>
             </header>
 
             <!-- Application content -->

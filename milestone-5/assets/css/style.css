@@ -33,6 +33,16 @@ header {
     max-width: 180px;
 }
 
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+.search-bar i {
+    font-size: 20px;
+    color: white;
+    margin-right: 10px;
+}
+
 #search {
     padding: 3px;
 }
