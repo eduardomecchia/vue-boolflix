@@ -9,6 +9,9 @@ const app = new Vue({
         movieResults: [],
         tvResults: [],
 
+        listOfMovieGenres: [],
+        listOfTvGenres: [],
+
         error: null
     },
 
@@ -75,7 +78,6 @@ const app = new Vue({
          * @param {string} category - Can either be "movie" or "tv". It's used to build the URL of the HTTP request
          */
         getGenres(array, category) {
-            
         },
 
         /**
@@ -87,5 +89,26 @@ const app = new Vue({
             const roundedNumber = Math.ceil(number);
             return Math.ceil(roundedNumber / 2);
         }
+    },
+
+    created() {
+        // Get all movie genres
+        axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.apiKey}`)
+        .then(response => {
+            this.listOfMovieGenres = response.data.genres;
+        })
+        .catch(error => {
+            console.error(error)
+        });
+
+        // Get all TV genres
+        axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${this.apiKey}`)
+        .then(response => {
+            console.log(response.data.genres);
+            this.listOfTvGenres = response.data.genres;
+        })
+        .catch(error => {
+            console.error(error);
+        });
     }
 });
