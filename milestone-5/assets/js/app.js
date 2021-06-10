@@ -36,6 +36,29 @@ const app = new Vue({
             });
         },
 
+        /** */
+        getCast(id) {
+            axios
+            .get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${this.apiKey}`)
+            .then((response) => {
+                console.log(response.data.cast);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        },
+
+        /* getGenres(id) {
+            axios
+            .get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${this.apiKey}`)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        }, */
+
         /**
          * Rounds up the a base 10 number and transforms it in a base 5 number
          * @param {number} number - The base 10 number
