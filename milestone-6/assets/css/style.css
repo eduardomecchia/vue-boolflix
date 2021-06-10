@@ -1,0 +1,125 @@
+/* Global rules */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #434343;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.text-nowrap {
+    white-space: nowrap;
+}
+
+/* Header rules */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+}
+
+.logo {
+    max-width: 180px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+.search-bar i {
+    font-size: 20px;
+    color: white;
+    margin-right: 10px;
+}
+
+#search {
+    padding: 3px;
+}
+
+/* Main content rules */
+
+main {
+    color: white;
+}
+
+.movies,
+.tv-shows {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+}
+
+.section-title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.result {
+    width: 376px;
+    height: 547px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    padding: 15px;
+    margin: 20px;
+    border: 2px solid white;
+    font-size: 22px;
+    overflow-y: auto;
+}
+.result > *:not(.poster), 
+.result:hover .poster {
+    display: none;
+    margin: 4px 0;
+}
+.result:hover > *:not(.poster) {
+    display: flex;
+}
+/* Hide card scrollbar for Chrome, Safari and Opera */
+.result::-webkit-scrollbar {
+    display: none;
+}
+/* Hide card scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.title > div, 
+.original-title > div, 
+.vote, 
+.original-language,
+.cast,
+.genres {
+    align-items: center;
+}
+
+.original-language img {
+    margin-left: 5px;
+}
+
+.star {
+    font-size: 25px;
+}
+.full.star {
+    color: #ffd400;
+}
+
+#error {
+    padding: 50px;
+    text-align: center;
+    font-size: 30px;
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boolflix</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./assets/css/style.css">
+        <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="./assets/img/favicon.png">
+    </head>
+    <body>
+        <div id="app">
+            <!-- Application header -->
+            <header>
+                <img class="logo" src="./assets/img/logo.png" alt="Boolflix logo">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input id="search" type="text" v-model="query" @keyup="search">
+                </div>
+            </header>
+
+            <!-- Application content -->
+            <main>
+                <!-- Movies section -->
+                <ul class="movies">
+                    <li class="section-title"v-if="movieResults.length > 0">
+                        <h1>MOVIES:</h1>
+                    </li>
+
+                    <li class="result" v-for="result in movieResults">
+                        <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
+
+                        <div class="title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Title:&nbsp;</span>
+                                <span>{{ result.title }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Original title:&nbsp;</span>
+                                <span>{{ result.original_title }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-language">
+                            <span class="font-weight-bold text-nowrap">Original language:&nbsp;</span>
+                            <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
+                        </div>
+
+                        <div class="cast">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
+                                <span v-if="result.cast">{{ result.cast.length > 0 ? result.cast.join(", ") : "No cast available." }}</span>
+                            </div>
+                        </div>
+
+                        <div class="genres">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>
+                                <span v-if="result.genre_names">{{ result.genre_names.length > 0 ? result.genre_names.join(", ") : "No genres available." }}</span>
+                            </div>
+                        </div>
+
+                        <div class="vote">
+                            <span class="font-weight-bold text-nowrap">Rating:&nbsp;</span>
+                            <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                        </div>
+
+                        <div class="overview">
+                            <div>
+                                <span class="font-weight-bold">Overview:&nbsp;</span>
+                                <span>{{ result.overview ? result.overview : "No description available." }}</span>
+                            </div>
+                        </div>
+                    </li> 
+                </ul>
+
+                <!-- TV shows section -->
+                <ul class="tv-shows">
+                    <li class="section-title" v-if="tvResults.length > 0">
+                        <h1>TV SHOWS:</h1>
+                    </li>
+
+                    <li class="result" v-for="result in tvResults">
+                        <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
+
+                        <div class="title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Title:&nbsp;</span>
+                                <span>{{ result.name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-title">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Original title:&nbsp;</span>
+                                <span>{{ result.original_name }}</span>
+                            </div>
+                        </div>
+
+                        <div class="original-language">
+                            <span class="font-weight-bold text-nowrap">Original language:&nbsp;</span>
+                            <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
+                        </div>
+
+                        <div class="cast">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
+                                <span v-if="result.cast">{{ result.cast.join(", ") }}</span>
+                            </div>
+                        </div>
+
+                        <div class="genres">
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>
+                                <span v-if="result.genre_names">{{ result.genre_names.length > 0 ? result.genre_names.join(", ") : "No genres available." }}</span>
+                            </div>
+                        </div>
+
+                        <div class="vote">
+                            <span class="font-weight-bold text-nowrap">Rating:&nbsp;</span>
+                            <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
+                        </div>
+
+                        <div class="overview">
+                            <div>
+                                <span class="font-weight-bold">Overview:&nbsp;</span>
+                                <span>{{ result.overview ? result.overview : "No description available." }}</span>
+                            </div>
+                        </div>
+                    </li> 
+                </ul>
+
+                <div id="error" v-if="error">{{ error }}</div>
+            </main>
+        </div>
+        
+        <!-- Axios CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <!-- Vue.js 2 CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <!-- App script -->
+        <script src="./assets/js/app.js"></script>
+    </body>
+</html>
