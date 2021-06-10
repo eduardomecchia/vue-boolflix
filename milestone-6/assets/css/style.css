@@ -67,9 +67,9 @@ main {
 
 .section-title {
     display: flex;
-    justify-content: center;
     width: 100%;
-    padding: 20px 0;
+    padding-top: 20px;
+    padding-left: 40px;
 }
 
 .result {
