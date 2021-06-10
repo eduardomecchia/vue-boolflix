@@ -28,6 +28,14 @@
                 <!-- Movies section -->
                 <div class="section-title" v-if="movieResults.length > 0">
                     <h1>Movies</h1>
+                    
+                    <div class="filter-menu">
+                        <label for="tv-filter">Filter by genre</label>
+                        <select name="tv-filter" id="tv-filter">
+                            <option value=""></option>
+                            <option value="" v-for=""></option>
+                        </select>
+                    </div>
                 </div>
 
                 <ul class="movies row">
@@ -84,6 +92,14 @@
                 <!-- TV shows section -->
                 <div class="section-title" v-if="tvResults.length > 0">
                     <h1>TV Shows</h1>
+
+                    <div class="filter-menu">
+                        <label for="tv-filter">Filter by genre</label>
+                        <select name="tv-filter" id="tv-filter">
+                            <option value=""></option>
+                            <option value="" v-for=""></option>
+                        </select>
+                    </div>
                 </div>
 
                 <ul class="tv-shows row">
