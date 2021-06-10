@@ -53,8 +53,10 @@
                         </div>
 
                         <div class="cast">
-                            <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
-                            <span>{{ result.cast.join(", ") }}</span>
+                            <div>
+                                <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
+                                <span v-if="result.cast">{{ result.cast.join(", ") }}</span>
+                            </div>
                         </div>
 
                         <div class="genres">
@@ -105,7 +107,7 @@
 
                         <div class="cast">
                             <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
-                            <span>{{ result.cast.join(", ") }}</span>
+                            <span v-if="result.cast">{{ result.cast.join(", ") }}</span>
                         </div>
 
                         <div class="genres">

@@ -91,7 +91,9 @@ main {
 .title > div, 
 .original_title > div, 
 .vote, 
-.original-language {
+.original-language,
+.cast,
+.genres {
     align-items: center;
 }
 
