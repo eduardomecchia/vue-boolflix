@@ -25,7 +25,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
+    padding: 20px;
     background-color: black;
 }
 
@@ -35,7 +35,6 @@ header {
 
 #search {
     padding: 3px;
-    min-width: 200px;
 }
 
 header button {
