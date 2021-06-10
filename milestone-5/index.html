@@ -49,14 +49,14 @@
                             <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
                         </div>
 
-                        <!-- <div class="cast">
+                        <div class="cast">
                             <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
-                            <span>{{ getCast(result.id) }}</span>
-                        </div> -->
+                            <span>{{ getCast("movie", result.id) }}</span>
+                        </div>
 
                         <!-- <div class="genres">
                             <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>
-                            <span>{{ getGenres(result.id) }}</span>
+                            <span>{{ getGenres("movie", result.id) }}</span>
                         </div> -->
 
                         <div class="vote">
@@ -100,14 +100,14 @@
                             <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
                         </div>
 
-                        <!-- <div class="cast">
+                        <div class="cast">
                             <span class="font-weight-bold text-nowrap">Cast:&nbsp;</span>
-                            <span>{{ getCast(result.id) }}</span>
-                        </div> -->
+                            <span>{{ getCast("tv", result.id) }}</span>
+                        </div>
 
                         <!-- <div class="genres">
                             <span class="font-weight-bold text-nowrap">Genres:&nbsp;</span>
-                            <span>{{ getGenres(result.id) }}</span>
+                            <span>{{ getGenres("tv", result.id) }}</span>
                         </div> -->
 
                         <div class="vote">

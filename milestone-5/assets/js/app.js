@@ -35,26 +35,43 @@ const app = new Vue({
             });
         },
 
-        /** */
-        /* getCast(id) {
+        /**
+         * Gets first five members of the cast of a movie or show with the given ID from theMovieDB API 
+         * @param {string} typeOfEntry - Either "movie" or "tv". Needed to make the HTTP request
+         * @param {string} id - ID that points to a specific entry in theMovieDB API
+         */
+        getCast(typeOfEntry, id) {
             axios
-            .get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${this.apiKey}`)
+            .get(`https://api.themoviedb.org/3/${typeOfEntry}/${id}/credits?api_key=${this.apiKey}`)
             .then((response) => {
-                console.log(response.data.cast);
+                let firstFiveActors = [];
+
+                for (let i = 0; i < 5; i++) {
+                    if (response.data.cast[i]) {
+                        firstFiveActors.push(response.data.cast[i].name);
+                    }
+                }
+                console.log(firstFiveActors);
+                
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
-        }, */
+        },
 
-        /* getGenres(id) {
+        /**
+         * Gets genres of movie or show with the given ID from theMovieDB API 
+         * @param {string} typeOfEntry - Either "movie" or "tv". Needed to make the HTTP request
+         * @param {string} id - ID that points to a specific entry in theMovieDB API
+         */
+        /* getGenres(typeOfEntry, id) {
             axios
-            .get(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=${this.apiKey}`)
+            .get(`https://api.themoviedb.org/3/${typeOfEntry}/${id}/credits?api_key=${this.apiKey}`)
             .then((response) => {
                 console.log(response.data);
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
         }, */
 
