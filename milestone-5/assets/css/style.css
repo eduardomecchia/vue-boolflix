@@ -88,6 +88,15 @@ main {
 .result:hover > *:not(.poster) {
     display: flex;
 }
+/* Hide card scrollbar for Chrome, Safari and Opera */
+.result::-webkit-scrollbar {
+    display: none;
+}
+/* Hide card scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 
 .title > div, 
 .original-title > div, 
