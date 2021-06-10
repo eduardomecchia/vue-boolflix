@@ -24,11 +24,11 @@ const app = new Vue({
                 const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
                 const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
     
-                axios.all([movieRequest, tvRequest])
-                .then(axios.spread((...responses) => {
+                Promise.all([movieRequest, tvRequest])
+                .then(responses => {
                     this.movieResults = responses[0].data.results;
                     this.tvResults = responses[1].data.results;
-                }))
+                })
                 .catch(error => {
                     if (error.response.status === 422) {
                         return
