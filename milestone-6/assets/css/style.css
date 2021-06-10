@@ -86,7 +86,8 @@ main {
     background-color: black;
     padding: 20px;
     margin: 20px;
-    border: 2px solid #535353;
+    border-radius: 5px;
+    box-shadow: inset 0px 0px 8px red;
     font-size: 22px;
     overflow-y: auto;
 }
