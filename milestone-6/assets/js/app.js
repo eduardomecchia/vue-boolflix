@@ -20,31 +20,33 @@ const app = new Vue({
          * Fires a request to theMovieDB API and gets the movies AND TV shows which name includes the query
          */
         search() {
-            const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
-            const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
-
-            axios.all([movieRequest, tvRequest])
-            .then(axios.spread((...responses) => {
-                this.movieResults = responses[0].data.results;
-                this.tvResults = responses[1].data.results;
-            }))
-            .catch(error => {
-                if (error.response.status === 422) {
-                    return
-                } else {
-                    console.error(error);
-                    this.error = "We're sorry, the service is unavailable at this time. Try again later.";
-                }
-            })
-            .finally(() => {
-                // Get cast and genres of all displayed movies 
-                this.getCast(this.movieResults, "movie");
-                this.getGenres(this.movieResults, "movie");
-
-                // Get cast and genres of all displayed TV shows
-                this.getCast(this.tvResults, "tv");
-                this.getGenres(this.tvResults, "tv");
-            });
+            if (this.query != "") {
+                const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
+                const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
+    
+                axios.all([movieRequest, tvRequest])
+                .then(axios.spread((...responses) => {
+                    this.movieResults = responses[0].data.results;
+                    this.tvResults = responses[1].data.results;
+                }))
+                .catch(error => {
+                    if (error.response.status === 422) {
+                        return
+                    } else {
+                        console.error(error);
+                        this.error = "We're sorry, the service is unavailable at this time. Try again later.";
+                    }
+                })
+                .finally(() => {
+                    // Get cast and genres of all displayed movies 
+                    this.getCast(this.movieResults, "movie");
+                    this.getGenres(this.movieResults, "movie");
+    
+                    // Get cast and genres of all displayed TV shows
+                    this.getCast(this.tvResults, "tv");
+                    this.getGenres(this.tvResults, "tv");
+                });
+            }
         },
 
         /**
