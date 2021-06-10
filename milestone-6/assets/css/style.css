@@ -5,11 +5,13 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: #434343;
     /* overflow-x: hidden; */
+
 }
 
 .font-weight-bold {
@@ -90,15 +92,6 @@ main {
 .result:hover > *:not(.poster) {
     display: flex;
 }
-/* Hide card scrollbar for Chrome, Safari and Opera */
-.result::-webkit-scrollbar {
-    display: none;
-}
-/* Hide card scrollbar for IE, Edge and Firefox */
-.scrollbar-hidden {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
 
 .title > div, 
 .original-title > div, 
@@ -124,6 +117,31 @@ main {
     padding: 50px;
     text-align: center;
     font-size: 30px;
+}
+
+/* Scrollbar rules */
+
+.row::-webkit-scrollbar {
+    height: 10px;
+    border-radius: 10px;
+    background-color: black;
+}
+.row::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #dc1a28;
+}
+.row::-webkit-scrollbar-thumb:hover {
+    background-color: #6d0e14;
+}
+
+/* Hide card scrollbar for Chrome, Safari and Opera */
+.result::-webkit-scrollbar {
+    display: none;
+}
+/* Hide card scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 /* Media queries */
