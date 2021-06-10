@@ -26,11 +26,11 @@
             <!-- Application content -->
             <main>
                 <!-- Movies section -->
-                <ul class="movies">
-                    <li class="section-title"v-if="movieResults.length > 0">
-                        <h1>MOVIES:</h1>
-                    </li>
+                <div class="section-title"v-if="movieResults.length > 0">
+                    <h1>MOVIES:</h1>
+                </div>
 
+                <ul class="movies">
                     <li class="result" v-for="result in movieResults">
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
 
@@ -82,10 +82,11 @@
                 </ul>
 
                 <!-- TV shows section -->
+                <div class="section-title" v-if="tvResults.length > 0">
+                    <h1>TV SHOWS:</h1>
+                </div>
+
                 <ul class="tv-shows">
-                    <li class="section-title" v-if="tvResults.length > 0">
-                        <h1>TV SHOWS:</h1>
-                    </li>
 
                     <li class="result" v-for="result in tvResults">
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
