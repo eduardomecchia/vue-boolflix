@@ -68,6 +68,10 @@ main {
     padding-left: 20px;
 }
 
+.section-title:not(.section-title:first-of-type) {
+    margin-top: 30px;
+}
+
 .result {
     width: 376px;
     height: 547px;
