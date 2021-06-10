@@ -20,7 +20,8 @@ const app = new Vue({
             const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
             const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
 
-            axios.all([movieRequest, tvRequest])
+            axios
+            .all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
                 this.movieResults = responses[0].data.results;
                 this.tvResults = responses[1].data.results;
@@ -32,30 +33,34 @@ const app = new Vue({
                     console.error(error);
                     this.error = "We're sorry, the service is unavailable at this time. Try again later.";
                 }
+            })
+            .finally(() => {
+                this.getCast(this.movieResults, "movie");
+                this.getCast(this.tvResults, "tv");
             });
         },
 
         /**
          * Gets first five members of the cast of a movie or show with the given ID from theMovieDB API 
-         * @param {string} typeOfEntry - Either "movie" or "tv". Needed to make the HTTP request
-         * @param {string} id - ID that points to a specific entry in theMovieDB API
+         * @param {array} array - Collection of movies or shows in which to cycle
+         * @param {string} category - Can either be movie or tv. It's used to build the URL of the HTTP request
          */
-        getCast(typeOfEntry, id) {
-            axios
-            .get(`https://api.themoviedb.org/3/${typeOfEntry}/${id}/credits?api_key=${this.apiKey}`)
-            .then((response) => {
-                let firstFiveActors = [];
+        getCast(array, category) {
+            array.forEach(entry => {
+                axios
+                .get(`https://api.themoviedb.org/3/${category}/${entry.id}/credits?api_key=${this.apiKey}`)
+                .then((response) => {
+                    this.$set(entry, "cast", []);
 
-                for (let i = 0; i < 5; i++) {
-                    if (response.data.cast[i]) {
-                        firstFiveActors.push(response.data.cast[i].name);
+                    for (let i = 0; i < 5; i++) {
+                        if (response.data.cast[i]) {
+                            entry.cast.push(response.data.cast[i].name);
+                        }
                     }
-                }
-                console.log(firstFiveActors);
-                
-            })
-            .catch((error) => {
-                console.error(error);
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
             });
         },
 
