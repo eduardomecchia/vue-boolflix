@@ -45,6 +45,16 @@
                             <img width="32" height="19" :src="'https://www.unknown.nu/flags/images/' + result.original_language + '-100'" onerror="this.src='./assets/img/unknown_language.png'" :alt="result.original_language">
                         </div>
 
+                        <div class="cast">
+                            <span class="font-weight-bold text-nowrap">Cast:</span>
+                            <span></span>
+                        </div>
+
+                        <div class="genres">
+                            <span class="font-weight-bold text-nowrap"></span>
+                            <span></span>
+                        </div>
+
                         <div class="vote">
                             <span class="font-weight-bold text-nowrap">Rating:&nbsp;</span>
                             <i class="fas fa-star star" v-for="(star, index) in 5" :class="{ full: index < toBaseFive(result.vote_average) }"></i>
