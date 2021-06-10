@@ -19,8 +19,7 @@ const app = new Vue({
             const movieRequest = axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${this.query}`);
             const tvRequest = axios.get(`https://api.themoviedb.org/3/search/tv?api_key=${this.apiKey}&query=${this.query}`);
 
-            axios
-            .all([movieRequest, tvRequest])
+            axios.all([movieRequest, tvRequest])
             .then(axios.spread((...responses) => {
                 const movieResults = responses[0].data.results;
                 const tvResults = responses[1].data.results;
