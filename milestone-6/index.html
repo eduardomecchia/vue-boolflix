@@ -32,8 +32,8 @@
                     <div class="filter-menu">
                         <label for="tv-filter">Filter by genre</label>
                         <select name="tv-filter" id="tv-filter">
-                            <option value=""></option>
-                            <option value="" v-for=""></option>
+                            <option value="listOfMovieGenres">All</option>
+                            <option :value="genre.name" v-for="genre in listOfMovieGenres">{{ genre.name }}</option>
                         </select>
                     </div>
                 </div>
@@ -95,10 +95,14 @@
 
                     <div class="filter-menu">
                         <label for="tv-filter">Filter by genre</label>
-                        <select name="tv-filter" id="tv-filter">
-                            <option value=""></option>
-                            <option value="" v-for=""></option>
-                        </select>
+
+                        <div class="filter-menu">
+                            <label for="tv-filter">Filter by genre</label>
+                            <select name="tv-filter" id="tv-filter">
+                                <option value="listOfTvGenres">All</option>
+                                <option :value="genre.name" v-for="genre in listOfTvGenres">{{ genre.name }}</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
