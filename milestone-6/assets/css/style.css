@@ -20,6 +20,12 @@ body {
     white-space: nowrap;
 }
 
+/* Application wrapper rules */
+
+#app {
+    height: 100vh;
+}
+
 /* Header rules */
 
 header {
