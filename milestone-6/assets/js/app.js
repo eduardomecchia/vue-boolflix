@@ -12,8 +12,8 @@ const app = new Vue({
         listOfMovieGenres: [],
         listOfTvGenres: [],
         
-        movieFilter: "",
-        tvFilter: "",
+        movieFilter: "All",
+        tvFilter: "All",
 
         error: null
     },
@@ -133,9 +133,5 @@ const app = new Vue({
         .catch(error => {
             console.error(error);
         });
-
-        // Reset filter menus on page load
-        this.movieFilter = this.listOfMovieGenres;
-        this.tvFilter = this.listOfTvGenres;
     }
 });

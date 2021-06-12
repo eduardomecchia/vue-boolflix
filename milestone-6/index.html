@@ -32,14 +32,14 @@
                     <div class="filter-menu">
                         <label for="movie-filter">Filter by genre</label>
                         <select v-model="movieFilter" name="movie-filter" id="movie-filter">
-                            <option :value="listOfMovieGenres">All</option>
-                            <option :value="genre.name" v-for="genre in listOfMovieGenres">{{ genre.name }}</option>
+                            <option value="All" selected>All</option>
+                            <option :value="genre" v-for="genre in listOfMovieGenres">{{ genre.name }}</option>
                         </select>
                     </div>
                 </div>
 
                 <ul class="movies row">
-                    <li class="result" v-if="result.genre_names.includes(movieFilter)" v-for="result in movieResults">
+                    <li class="result" v-for="result in movieResults" v-if="result.genre_ids.includes(movieFilter.id) || movieFilter == 'All'">
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
 
                         <div class="title">
@@ -96,14 +96,14 @@
                     <div class="filter-menu">
                         <label for="tv-filter">Filter by genre</label>
                         <select v-model="tvFilter" name="tv-filter" id="tv-filter">
-                            <option :value="listOfTvGenres">All</option>
-                            <option :value="genre.name" v-for="genre in listOfTvGenres">{{ genre.name }}</option>
+                            <option value="All">All</option>
+                            <option :value="genre" v-for="genre in listOfTvGenres">{{ genre.name }}</option>
                         </select>
                     </div>
                 </div>
 
                 <ul class="tv-shows row">
-                    <li class="result" v-if="result.genre_names.includes(tvFilter)" v-for="result in tvResults">
+                    <li class="result" v-for="result in tvResults" v-if="result.genre_ids.includes(tvFilter.id) || tvFilter == 'All'">
                         <img class="poster" :src="result.poster_path ? 'https://image.tmdb.org/t/p/w342' + result.poster_path : './assets/img/poster_placeholder.png'" :alt="result.original_title ? 'Poster image of ' + result.original_title : 'Poster image of ' + result.original_name">
 
                         <div class="title">
