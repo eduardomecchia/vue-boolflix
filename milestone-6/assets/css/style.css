@@ -124,7 +124,7 @@ main {
     color: #ffd400;
 }
 
-#error {
+.message {
     padding: 50px;
     text-align: center;
     font-size: 30px;
