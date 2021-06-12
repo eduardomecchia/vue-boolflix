@@ -36,12 +36,8 @@ const app = new Vue({
                     this.tvResults = responses[1].data.results;
                 })
                 .catch(error => {
-                    if (error.response.status === 422) {
-                        return
-                    } else {
-                        console.error(error);
-                        this.error = "We're sorry, the service is unavailable at this time. Try again later.";
-                    }
+                    console.error(error);
+                    this.error = "We're sorry, the service is unavailable at this time. Try again later.";             
                 })
                 .finally(() => {
                     // Get cast and genres of all displayed movies 
