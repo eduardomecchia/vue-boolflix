@@ -94,14 +94,19 @@ main {
     box-shadow: inset 0px 0px 8px red;
     font-size: 22px;
     overflow-y: auto;
+    transition: transform 0.55s;
 }
 .result > *:not(.poster), 
 .result:hover .poster {
     display: none;
     margin: 4px 0;
+    transform: scaleX(-1);
 }
 .result:hover > *:not(.poster) {
     display: flex;
+}
+.result:hover {
+    transform: scaleX(-1);
 }
 
 .title > div, 
